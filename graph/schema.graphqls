@@ -1,0 +1,33 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type MenuType {
+  id : ID!
+  name : String!
+}
+
+type MenuDetail {
+    menu_id : String!
+    name : String!
+    detail : String!
+    picture : String!
+    price : Int!
+    type_name : String!
+    warteg_id : String!
+}
+
+type MenuList {
+    menu_id : String!
+    name : String!
+    price : Int!
+    type_name : String!
+    warteg_id : String!
+}
+
+
+type Query {
+      menutype : [MenuType!]!
+      menudetail (menu_id: String!) : MenuDetail!
+      menulist (warteg_id: String, menu_type_id: String, menu_name: String): [MenuList!]!
+}

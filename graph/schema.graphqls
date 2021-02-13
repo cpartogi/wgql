@@ -25,9 +25,56 @@ type MenuList {
     warteg_id : String!
 }
 
+type WartegDetail {
+    warteg_id : String!
+    name : String!
+    desc : String!
+    address : String!
+    contact_name : String!
+    phone : String!
+}
+
+type WartegList {
+    warteg_id : String!
+    name : String!
+    address : String!
+}
+
+input InputMenu {
+    name : String!
+    detail : String!
+    picture : String!
+    price : Int!
+    menu_type_id : Int!
+    warteg_id : String!
+}
+
+input InputWarteg {
+    name : String!
+    description : String!
+    address : String!
+    contact_name : String!
+    phone : String!
+}
+
+type Resdata {
+    status_code : Int!
+    message : String!
+}
 
 type Query {
       menutype : [MenuType!]!
       menudetail (menu_id: String!) : MenuDetail!
       menulist (warteg_id: String, menu_type_id: String, menu_name: String): [MenuList!]!
+      wartegdetail (warteg_id: String!) : WartegDetail!
+      warteglist (warteg_name: String) : [WartegList!]!
+}
+
+type Mutation {
+    addMenu (input: InputMenu!) : Resdata!
+    updateMenu (input: InputMenu!, menu_id:String!) : Resdata!
+    deleteMenu (menu_id:String!) : Resdata!
+    addWarteg (input: InputWarteg!) : Resdata!
+    updateWarteg (input:InputWarteg!, warteg_id:String!) : Resdata!
+    deleteWarteg (warteg_id:String!) : Resdata!
 }
